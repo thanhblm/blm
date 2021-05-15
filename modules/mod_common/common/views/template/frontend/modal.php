@@ -1,0 +1,1 @@
+<div class="modal fade draggable-modal <?=$extraClass?>" <?php echo ! empty ( $id ) ? "id='$id'" : ""; ?> tabindex="-1" role="basic" aria-hidden="true" style="display: none;" <?=isset($size) && !empty($size)? "data-width='$size'" : ""?>></div>

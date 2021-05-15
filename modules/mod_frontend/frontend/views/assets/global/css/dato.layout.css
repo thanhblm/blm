@@ -1,0 +1,22 @@
+@media (min-width: 1200px){
+    .grid-content .ul_1 > .container{
+        padding: 0 !important;
+        max-width: 1430px;
+    }
+}
+
+@media (min-width: 768px){
+    .grid-content > .container{
+        width: 100%;
+        padding: 0;
+    }
+}
+.layout_grid > .grid-content{
+    padding: 0;
+}
+.max-width img{
+	width:100%;
+}
+.image-max-width img{
+    width:100%;
+}

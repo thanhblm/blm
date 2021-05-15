@@ -1,0 +1,44 @@
+/* here you can put your own css to customize and override the theme */
+.attr-item{
+    line-height:40px;
+}
+.list-attr{}
+.list-attr ul{
+    position:relative;
+}
+.list-attr ul li{
+    list-style:none;
+    float:left;
+    margin-left:10px;
+}
+.list-attr ul li span{
+    border: 1px solid #e9e9e9;
+    padding: 5px;
+    color: #333;
+    border-radius: 3px;
+    background-color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.list-attr ul li span:hover , .list-attr ul li.active span{
+    border: 3px solid #f90;
+    border-radius: 4px;
+    padding: 3px;
+    text-decoration: none;
+}
+.list-attr ul li span:hover img, .list-attr ul li.active span img{
+    width:36px;
+}
+.list-attr ul li.attr-image span{
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+}
+.clearfix{
+    clear:both;
+}
+
+attr-item input[type=checkbox] {
+    display:none;
+}

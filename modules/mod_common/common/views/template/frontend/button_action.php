@@ -1,0 +1,2 @@
+<a class="btn btn-circle btn-icon-only btn-outline <?=$color?> tooltips" data-placement="top" data-original-title="<?=$title?>" 
+href="<?=isset($url) && !empty($url) ? $url : "javascript:$js"?>"><i class="<?=$iconClass?>"></i></a>

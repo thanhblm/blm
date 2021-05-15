@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://logging.apache.org/log4php/">
+	<appender name="console" class="LoggerAppenderConsole" ></appender>
+	<appender name="file" class="LoggerAppenderFile" threshold = "info">
+		<layout class="DatoLoggerLayoutPattern">
+			<param name="conversionPattern" value="%d{Y-m-d H:i:s}[%p][%c] %m%n" />
+		</layout>
+		<param name="file" value="/opt/blm/blm.log" />
+	</appender>
+	<appender name="file-trace" class="LoggerAppenderFile" threshold = "all">
+		<layout class="DatoLoggerLayoutPattern">
+			<param name="conversionPattern" value="%d{Y-m-d H:i:s}[%p][%c] %m%n" />
+		</layout>
+		<param name="file" value="/opt/blm/blm-trace.log" />
+	</appender>
+	<appender name="file-elapsed-time" class="LoggerAppenderFile" threshold = "all">
+		<layout class="DatoLoggerLayoutPattern">
+			<param name="conversionPattern" value="%d{Y-m-d H:i:s}[%p][%c] %m%n" />
+		</layout>
+		<param name="file" value="/opt/blm/blm-elapsed-time.log" />
+	</appender>
+	<logger name="ELAPSED TIME" additivity = "true">
+        <level value="trace" />
+        <appender_ref ref="file-elapsed-time" />
+    </logger>
+	<root>
+		<level value="TRACE" />
+		<appender_ref ref="file" />
+		<appender_ref ref="file-trace" />
+	</root>
+</configuration>

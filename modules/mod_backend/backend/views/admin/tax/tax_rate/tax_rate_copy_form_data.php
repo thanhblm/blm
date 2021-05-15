@@ -1,0 +1,74 @@
+<?php
+use common\template\extend\FormContainer;
+use common\template\extend\Text;
+use common\template\extend\TextInput;
+use core\Lang;
+use core\utils\RequestUtil;
+use common\template\extend\Link;
+
+$taxRate = RequestUtil::get ( "taxRate" );
+$form = new FormContainer ();
+$form->id = "taxRateCopyFormId";
+$form->attributes = 'class="form-horizontal" ';
+$form->renderStart ();
+?>
+<div class="form-body">
+	<?php
+	$text = new TextInput ();
+	$text->errorMessage = RequestUtil::getFieldError ( "taxRate[name]" );
+	$text->hasError = RequestUtil::isFieldError ( "taxRate[name]" );
+	$text->label = Lang::get ( "Name" );
+	$text->required = true;
+	$text->name = "taxRate[name]";
+	$text->value = Lang::get($taxRate->name);
+	$text->render ();
+	
+	$text = new Text ();
+	$text->name = "taxRate[id]";
+	$text->value = $taxRate->id;
+	$text->type = "hidden";
+	$text->render ();
+	?>
+	<div class="portlet light">
+		<div class="portlet-title">
+            <div class="caption font-green-sharp">
+                <i class="fa fa-cogs"></i><?= Lang::get("Rate list") ?>
+            </div>
+            <div class="actions">
+                <?php
+                    $link = new Link();
+                    $link->class = "btn btn-circle blue";
+                    $link->link = "javascript:addTaxRateInfoDialog(\"0\");";
+                    $link->title = "<i class=\"fa fa-plus white\"></i> ".Lang::get("Add new tax rate");
+                    $link->id = "iAddTaxClassInfo";
+                    $link->render();
+                
+                    $link = new Link();
+                    $link->class = "btn btn-circle blue";
+                    $link->link = "javascript:addTaxRateDynamicDialog(\"0\");";
+                    $link->title = "<i class=\"fa fa-plus white\"></i> ".Lang::get("Add new tax rate dynamic");
+                    $link->id = "iAddTaxClassDynamic";
+                    $link->render();
+                    
+                    $link = new Link();
+                    $link->class = "btn btn-circle btn-icon-only btn-default fullscreen";
+                    $link->render();
+                ?>
+
+            </div>
+        </div>
+		<form id="page_form_tax">
+			<div class="portlet-body flip-scroll " style="display: block; padding: 0; width: 100%; overflow-x: auto; overflow-y: hidden; border: 1px solid #e7ecf1;" id="page_result_tax">
+				<?php include 'tax_rate_info/tax_rate_info_list_data.php';?>
+			</div>
+		</form>
+	</div>
+</div>
+<?php $form->renderEnd(); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+	var countTaxRateInfo = $("tr.taxClassIndex").length;
+	$("a#iAddTaxClassInfo").attr("href", "javascript:addTaxRateInfoDialog('"+countTaxRateInfo+"')");
+	$("a#iAddTaxClassDynamic").attr("href", "javascript:addTaxRateDynamicDialog('"+countTaxRateInfo+"')");
+});
+</script>
