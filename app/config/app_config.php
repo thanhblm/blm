@@ -80,14 +80,14 @@ ApplicationConfig::set("language.default.code", "en");
 ApplicationConfig::set('site.name', 'HPD Framework');
 ApplicationConfig::set('version', '0.0.1');
 ApplicationConfig::set('session.prefix', 'blm');
-ApplicationConfig::set('web.context', '/blmsystem');
+ApplicationConfig::set('web.context', '');
 // Set production mode.
-ApplicationConfig::set('production.mode', 'dev');
+ApplicationConfig::set('production.mode', 'production');
 // Database APP_SETTINGS.
 ApplicationConfig::set('db.host', 'localhost');
-ApplicationConfig::set('db.username', 'root');
-ApplicationConfig::set('db.password', '');
-ApplicationConfig::set('db.schema', 'admin_etoviet');
+ApplicationConfig::set('db.username', 'crmmodbe_blm');
+ApplicationConfig::set('db.password', 'Vbrand@t2d');
+ApplicationConfig::set('db.schema', 'crmmodbe_blm');
 // Email settings
 ApplicationConfig::set('email.host', 'smtp.gmail.com');
 ApplicationConfig::set('email.port', 587);
