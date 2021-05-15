@@ -8,12 +8,10 @@ use common\persistence\extend\vo\ProductHomeExtendVo;
 use core\database\QueryBuilder;
 use core\database\SqlStatementInfo;
 
-class ProductHomeExtendMapping
-{
-    public function getProductHomeById(ProductHomeExtendVo $productExtendVo)
-    {
-        try {
-            $query = "
+class ProductHomeExtendMapping{
+	public function getProductHomeById(ProductHomeExtendVo $productExtendVo){
+		try {
+			$query = "
 				select
 				 	p.id,
 					if(trim(cl.name)='' or cl.name is null,cat.name,cl.name) as category_name,
@@ -58,20 +56,19 @@ class ProductHomeExtendMapping
 				left join product_price as pp on pp.product_id = p.id and pp.currency_code = #{currencyCode}
 				left join seo_info_lang as si on si.type = 'product' and si.item_id = p.id and si.language_code = #{languageCode}
 				left join currency as c on c.code = pp.currency_code";
-            $queryBuilder = new QueryBuilder($productExtendVo, $query);
-            $queryBuilder
-                ->appendCondition("p.`id`", "id")
-                ->appendLimit();
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($productExtendVo, $query);
+			$queryBuilder
+				->appendCondition("p.`id`", "id")
+				->appendLimit();
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getProductHomeByFilter(ProductHomeExtendVo $productExtendVo)
-    {
-        try {
-            $query = "
+	public function getProductHomeByFilter(ProductHomeExtendVo $productExtendVo){
+		try {
+			$query = "
 				select * from(
 					select 
 				 	p.id,
@@ -109,25 +106,24 @@ class ProductHomeExtendMapping
 				left join seo_info_lang as si on si.type = 'product' and si.item_id = p.id and si.language_code = #{languageCode}
 				left join currency as c on c.code = pp.currency_code
 				inner join product_region as pre on p.id = pre.product_id and pre.region_id = #{regionId}) p ";
-            $queryBuilder = new QueryBuilder($productExtendVo, $query);
-            $queryBuilder
-                ->appendCondition("p.`id`", "id", "=", false)
-                ->appendCondition("category_id", "categoryId")
-                ->appendCondition("`featured`", "featured")
-                ->appendCondition("p.`status`", "status")
-                ->appendCondition("`name`", "name", "like", false, ":PARAM_BOTH_LIKE")
-                ->appendOrder()
-                ->appendLimit();
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($productExtendVo, $query);
+			$queryBuilder
+				->appendCondition("p.`id`", "id", "=", false)
+				->appendCondition("category_id", "categoryId")
+				->appendCondition("`featured`", "featured")
+				->appendCondition("p.`status`", "status")
+				->appendCondition("`name`", "name", "like", false, ":PARAM_BOTH_LIKE")
+				->appendOrder()
+				->appendLimit();
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getCountProductHomeByFilter(ProductHomeExtendVo $productExtendVo)
-    {
-        try {
-            $query = "
+	public function getCountProductHomeByFilter(ProductHomeExtendVo $productExtendVo){
+		try {
+			$query = "
 				select * from(
 					select 
 				 	p.id,
@@ -142,24 +138,23 @@ class ProductHomeExtendMapping
 				left join seo_info_lang as si on si.type = 'product' and si.item_id = p.id and si.language_code = #{languageCode}
 				left join currency as c on c.code = pp.currency_code
 				inner join product_region as pre on p.id = pre.product_id and pre.region_id = #{regionId}) p ";
-            $queryBuilder = new QueryBuilder($productExtendVo, $query);
-            $queryBuilder
-                ->appendCondition("p.`id`", "id", "=", false)
-                ->appendCondition("category_id", "categoryId")
-                ->appendCondition("`featured`", "featured")
-                ->appendCondition("p.`status`", "status")
-                ->appendCondition("`name`", "name", "like", false, ":PARAM_BOTH_LIKE");
-            $sql = "select count(*) from (" . $queryBuilder->getSql() . ") tmp";
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $sql, ProductHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($productExtendVo, $query);
+			$queryBuilder
+				->appendCondition("p.`id`", "id", "=", false)
+				->appendCondition("category_id", "categoryId")
+				->appendCondition("`featured`", "featured")
+				->appendCondition("p.`status`", "status")
+				->appendCondition("`name`", "name", "like", false, ":PARAM_BOTH_LIKE");
+			$sql = "select count(*) from (" . $queryBuilder->getSql() . ") tmp";
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $sql, ProductHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getProductHomeRelateCategories(ProductHomeExtendVo $productExtendVo)
-    {
-        try {
-            $query = "
+	public function getProductHomeRelateCategories(ProductHomeExtendVo $productExtendVo){
+		try {
+			$query = "
 				select * from(
 					select
 				 	p.id,
@@ -199,17 +194,16 @@ class ProductHomeExtendMapping
 				inner join product_region as pre on p.id = pre.product_id and pre.region_id = #{regionId}) p 
 					where p.category_id=#{categoryId} and p.status = #{status} and p.id != #{id}
 				ORDER BY RAND() LIMIT 3";
-            $queryBuilder = new QueryBuilder($productExtendVo, $query);
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($productExtendVo, $query);
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getCategoryHomeById(CategoryHomeExtendVo $categoryExtendVo)
-    {
-        try {
-            $query = "
+	public function getCategoryHomeById(CategoryHomeExtendVo $categoryExtendVo){
+		try {
+			$query = "
 				select distinct
 					c.id,
 					c.code,
@@ -226,21 +220,20 @@ class ProductHomeExtendMapping
 				from category as c
 				left join category_lang as cl on c.id = cl.category_id and cl.`language_code` = #{languageCode}
 				left join seo_info_lang as sil on sil.item_id = c.id and sil.`type` = 'category' and sil.`language_code` = #{languageCode}";
-            $queryBuilder = new QueryBuilder($categoryExtendVo, $query);
-            $queryBuilder
-                ->appendCondition("c.`id`", "id")
-                ->appendCondition("c.`status`", "status");
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), CategoryHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($categoryExtendVo, $query);
+			$queryBuilder
+				->appendCondition("c.`id`", "id")
+				->appendCondition("c.`status`", "status");
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), CategoryHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getCategoryHomeByFilter(CategoryHomeExtendVo $categoryExtendVo)
-    {
-        try {
-            $query = "
-				select
+	public function getCategoryHomeByFilter(CategoryHomeExtendVo $categoryExtendVo){
+		try {
+			$query = "
+				select distinct
 					c.id,
 					c.parent_id,
 					c.level,
@@ -263,26 +256,21 @@ class ProductHomeExtendMapping
 				from category as c 
 				left join category_lang as cl on c.id = cl.category_id and cl.`language_code` = #{languageCode}
 				left join seo_info_lang as sil on sil.item_id = c.id and sil.`type` = 'category' and sil.`language_code` = #{languageCode}";
-            $queryBuilder = new QueryBuilder($categoryExtendVo, $query);
-            $queryBuilder
-                ->appendCondition("c.`id`", "id")
-                ->appendCondition("c.`status`", "status")
-                ->appendCondition("c.`parent_id`", "parentId");
-            $sql = $queryBuilder->getSql();
-            $sql .= ' group by c.id';
-            $queryBuilder = new QueryBuilder($categoryExtendVo, $sql);
-            $queryBuilder
-                ->appendOrder();
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), CategoryHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($categoryExtendVo, $query);
+			$queryBuilder
+				->appendCondition("c.`id`", "id")
+				->appendCondition("c.`status`", "status")
+				->appendCondition("c.`parent_id`", "parentId")
+				->appendOrder();
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), CategoryHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getRelationProducts(ProductHomeExtendVo $productHomeVo)
-    {
-        try {
-            $query = "
+	public function getRelationProducts(ProductHomeExtendVo $productHomeVo){
+		try {
+			$query = "
 				select
 				 	p.id,
 				    p.category_id,
@@ -318,38 +306,36 @@ class ProductHomeExtendMapping
 				left join currency as c on c.code = pp.currency_code 
 				inner join product_region as pre on p.id = pre.product_id and pre.region_id = #{regionId}
 				where p.id in (select pr.relate_product_id from product_relation as pr where pr.product_id = #{id}) and p.status = #{status}";
-            $queryBuilder = new QueryBuilder($productHomeVo, $query);
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($productHomeVo, $query);
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getBulDiscountByProduct(BulkDiscountExtendVo $bulkDiscountVo)
-    {
-        try {
-            $query = "
+	public function getBulDiscountByProduct(BulkDiscountExtendVo $bulkDiscountVo){
+		try {
+			$query = "
 				select 
 					bd.*,
 					bdp.quantity as product_quantity 
 				from bulk_discount as bd 
 				inner join bulk_discount_product as bdp on bd.id = bdp.bulk_discount_id";
-            $queryBuilder = new QueryBuilder($bulkDiscountVo, $query);
-            $queryBuilder
-                ->appendCondition("bdp.product_id", "productId")
-                ->appendCondition("bd.status", "status")
-                ->appendCondition("bd.valid_from", "dateNow", "<=")
-                ->appendCondition("bd.valid_to", "dateNow", ">=");
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), BulkDiscountExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($bulkDiscountVo, $query);
+			$queryBuilder
+				->appendCondition("bdp.product_id", "productId")
+				->appendCondition("bd.status", "status")
+				->appendCondition("bd.valid_from", "dateNow", "<=")
+				->appendCondition("bd.valid_to", "dateNow", ">=");
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), BulkDiscountExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getBestSellers(ProductHomeExtendVo $productExtendVo = null)
-    {
-        try {
-            $query = "
+	public function getBestSellers(ProductHomeExtendVo $productExtendVo = null){
+		try {
+			$query = "
 				select * from(
 					select
 				 	p.id,
@@ -388,19 +374,18 @@ class ProductHomeExtendMapping
 				left join currency as c on c.code = pp.currency_code
 				inner join product_region as pre on p.id = pre.product_id and pre.region_id = #{regionId}
 				inner join (select op.product_id, sum(op.quantity) as amount from order_product op group by op.product_id order by amount desc) as op on p.id = op.product_id) p ";
-            $queryBuilder = new QueryBuilder($productExtendVo, $query);
-            $queryBuilder
-                ->appendCondition("p.`status`", "status");
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			$queryBuilder = new QueryBuilder($productExtendVo, $query);
+			$queryBuilder
+				->appendCondition("p.`status`", "status");
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 
-    public function getProductHomeByRandom(ProductHomeExtendVo $productExtendVo)
-    {
-        try {
-            $query = "
+	public function getProductHomeByRandom(ProductHomeExtendVo $productExtendVo){
+		try {
+			$query = "
 				select * from(
 					select
 				 	p.id,
@@ -440,11 +425,11 @@ class ProductHomeExtendMapping
 				inner join product_region as pre on p.id = pre.product_id and pre.region_id = #{regionId}) p 
 					where p.status = #{status} and p.id != #{id}
 				ORDER BY RAND() LIMIT 3";
-            $queryBuilder = new QueryBuilder($productExtendVo, $query);
+			$queryBuilder = new QueryBuilder($productExtendVo, $query);
 
-            return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
+			return new SqlStatementInfo(SqlStatementInfo::SELECT, null, $queryBuilder->getSql(), ProductHomeExtendVo::class);
+		} catch (\Exception $e) {
+			throw $e;
+		}
+	}
 }
