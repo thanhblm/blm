@@ -1238,7 +1238,9 @@ ul.MuiTypography-root {
 	width: 100%;
 	display: inherit;
 	align-items: inherit;
-	justify-content: inherit
+	justify-content: inherit;
+	color: #fff;
+	font-size: 14px;
 }
 
 .MuiButton-text {
@@ -1355,8 +1357,8 @@ ul.MuiTypography-root {
 }
 
 .MuiButton-containedPrimary {
-	color: #fff;
-	background-color: #2196f3
+	color: #fff !important;
+	background-color: #2196f3 !important
 }
 
 	.MuiButton-containedPrimary:hover {
@@ -1604,10 +1606,12 @@ ul.MuiTypography-root {
 }
 
 .jss45 {
-	padding: 8px 24px;
-	font-size: 14px
+	padding: 0 24px;
+	font-size: 14px;
 }
-
+.desktop-action a{
+	line-height: 88px;
+}
 .jss46 {
 	border-radius: 200px
 }
@@ -2071,6 +2075,10 @@ label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus::
 		min-height: 63px;
 		grid-column: 1/2;
 		border-radius: 4px
+	}
+	.jss24{
+		display: block !important;
+    	text-align: center;
 	}
 }
 
@@ -4190,19 +4198,21 @@ input:focus + .MuiRating-pristine {
 		display: block
 	}
 }
+/*style endoca */
+
 /*style 3*/
 
-.jss18 li{
-	display: flex;
-	font-size: 16px;
-	color: #fff;
-}
-.jss18 li a{
+.navbar-nav > li > a{
 	font-size: 16px;
 	color: #fff;
 	font-family: Open Sans,sans-serif;
     font-weight: 600;
-    line-height: 32px;
+}
+.navbar .active > a{
+	font-size: 16px;
+	color: #fff;
+	font-family: Open Sans,sans-serif;
+    font-weight: 600;
 }
 .jss18 li i{
 	padding-top: 15px;
@@ -4214,5 +4224,17 @@ input:focus + .MuiRating-pristine {
 	padding: 0;
 }
 .dropdown-toggle::after{
+	display: none;
+}
+.page-banner{
+	padding-top: 150px;
+}
+.breadcrumb{
+	display: flex;
+}
+.breadcrumb li{
+	margin-left: 30px;
+}
+.breadcrumb li::marker{
 	display: none;
 }

@@ -27,7 +27,7 @@ $blog = RequestUtil::get("gioiThieuVo");
                         <div class="jss143">
                             <p class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextPrimary"><span style="display:block">FREE 14 DAY TRIAL</span></p>
                         </div>
-                        <h1 class="MuiTypography-root jss144 jss146 MuiTypography-h1"><span style="display:block">Work simpler. Grow smarter.</span></h1>
+                        <h1 class="MuiTypography-root jss144 jss146 MuiTypography-h1"><span style="display:block"><?= Lang::get('Work simpler. Grow smarter.') ?></span></h1>
                         <h4 class="MuiTypography-root jss145 jss146 MuiTypography-h4">Start a risk free trial to see how easily you can improve scheduling, dispatching, invoicing and payment collection.</h4>
                     </div>
                     <div class="jss137 jss141">
@@ -228,10 +228,10 @@ $blog = RequestUtil::get("gioiThieuVo");
                 </div>
                 <div class="jss187">
                     <ol class="jss188">
-                        <li class="MuiTypography-root jss193 jss196 MuiTypography-h3" aria-current="true">
-                            <a data-testid="Link-GatsbyLink-internal" class="jss32 jss194 jss197" href="industries/hvac-software/index.html">
+                        <li class="MuiTypography-root jss193 jss199 MuiTypography-h3" aria-current="false">
+                            <a data-testid="Link-GatsbyLink-internal" class="jss32 jss194 jss200" href="industries/hvac-software/index.html">
                                 HVAC<!-- -->
-                                <aside class="jss195 jss198">➔</aside>
+                                <aside class="jss195 jss201">➔</aside>
                             </a>
                         </li>
                         <li class="MuiTypography-root jss193 jss199 MuiTypography-h3" aria-current="false">
@@ -293,7 +293,7 @@ $blog = RequestUtil::get("gioiThieuVo");
                         <div data-testid="PopoverVideo-root" class="jss177">
                             <div class="wistia_responsive_padding jss178">
                                 <div class="wistia_responsive_wrapper jss179">
-                                <span class="wistia_embed wistia_async_wxi4nbb9p8 popover=true videoFoam=true jss179 wistia_embed_initialized" id="wistia-wxi4nbb9p8-1"><div id="wistia_67.thumb_container" class="wistia_click_to_play" style="position: relative; height: 316.406px; width: 562.5px;"><div id="wistia_148.thumbnail" tabindex="0" style="cursor: pointer; display: block; height: 316.391px; overflow: hidden; outline: none; position: relative; width: 562.5px;" class=""><div id="wistia_163.big_play_button_background" style="height: 81px; position: absolute; width: 127px; z-index: 1; background-color: rgba(84, 187, 255, 0.8); left: 218px; top: 118px;"></div><div id="wistia_163.big_play_button_graphic" tabindex="0" role="button" aria-label="Play" style="background: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAABRCAYAAAD7G3lVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATFJREFUeNrs22FtwkAYx+F2QcAkMAfgYBKQwBxMQh1MwiRQB+CgEoaDzkG5S1a+E5IF+n+e5D4ve3+7N0s4mgYAAAAAAAAAAAAA7jFN06cp5MavjuWsTSMzfjWWszORzPizQzmvJpMZ3xYIj28LiG8LpMeffdsCufGrn3LeTS0z/uzLFsiNbwuEx7cFxL9ugY1pZsafdSaaG78abIHc+LaA+MvbAi/+XG5Sww9L2QLtEm/+P/2oUzkfbduexc+LX51L/DdrP09fzvaZf4GVhjf7/Vv3vVFk/bfvMUhg/PoAZG+6efE9Aw+MP/oCSGZ8tz0wvtseGn9w2zPjdyaXF99n9aHx3fbA+G57aHy3PTC+N/mh8b3DD4zvtofGd9tD47vtAAAAAAAAAAAAADymiwADAOSj1JBfF8xMAAAAAElFTkSuQmCC&quot;) 0px 0px / 127px 81px no-repeat transparent; cursor: pointer; display: block; height: 81px; outline: none; position: absolute; width: 127px; z-index: 1; left: 218px; top: 118px;"></div><img id="wistia_148.thumbnail_img" alt="Wistia video thumbnail" src="https://embed-fastly.wistia.com/deliveries/b19a3ed2a8d9d9bbcc5b90cd85989d73.jpg?image_crop_resized=640x360" style="border: 0px; display: block; float: none; height: 316.391px; margin: 0px; max-height: none; max-width: none; padding: 0px; position: absolute; width: 562.5px; left: 0px; top: 0px;"></div></div></span>
+                                <span class="wistia_embed wistia_async_zn84n4rhzk popover=true videoFoam=true jss179 wistia_embed_initialized" id="wistia-zn84n4rhzk-1"><div id="wistia_57.thumb_container" class="wistia_click_to_play" style="position: relative; height: 316.406px; width: 562.5px;"><div id="wistia_197.thumbnail" tabindex="0" style="cursor: pointer; display: block; height: 316.391px; overflow: hidden; outline: none; position: relative; width: 562.5px;" class=""><div id="wistia_212.big_play_button_background" style="height: 81px; position: absolute; width: 127px; z-index: 1; background-color: rgba(84, 187, 255, 0.8); left: 218px; top: 118px;"></div><div id="wistia_212.big_play_button_graphic" tabindex="0" role="button" aria-label="Play" style="background: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAABRCAYAAAD7G3lVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATFJREFUeNrs22FtwkAYx+F2QcAkMAfgYBKQwBxMQh1MwiRQB+CgEoaDzkG5S1a+E5IF+n+e5D4ve3+7N0s4mgYAAAAAAAAAAAAA7jFN06cp5MavjuWsTSMzfjWWszORzPizQzmvJpMZ3xYIj28LiG8LpMeffdsCufGrn3LeTS0z/uzLFsiNbwuEx7cFxL9ugY1pZsafdSaaG78abIHc+LaA+MvbAi/+XG5Sww9L2QLtEm/+P/2oUzkfbduexc+LX51L/DdrP09fzvaZf4GVhjf7/Vv3vVFk/bfvMUhg/PoAZG+6efE9Aw+MP/oCSGZ8tz0wvtseGn9w2zPjdyaXF99n9aHx3fbA+G57aHy3PTC+N/mh8b3DD4zvtofGd9tD47vtAAAAAAAAAAAAADymiwADAOSj1JBfF8xMAAAAAElFTkSuQmCC&quot;) 0px 0px / 127px 81px no-repeat transparent; cursor: pointer; display: block; height: 81px; outline: none; position: absolute; width: 127px; z-index: 1; left: 218px; top: 118px;" class=""></div><img id="wistia_197.thumbnail_img" alt="Wistia video thumbnail" src="https://embedwistia-a.akamaihd.net/deliveries/58580e4ca3014265343285b5e93caa21.jpg?image_crop_resized=640x360" style="border: 0px; display: block; float: none; height: 316.391px; margin: 0px; max-height: none; max-width: none; padding: 0px; position: absolute; width: 562.5px; left: 0px; top: 0px;"></div></div></span>
                                 </div>
                             </div>
                         </div>
