@@ -1,0 +1,7 @@
+.layout-container {}
+.grid-content{}
+.layout_grid{}
+
+.layout-container .layout_grid > .container{
+    max-width: 1430px; */
+}

@@ -14,7 +14,6 @@ $titlePage = SettingHelper::getSettingValue("Name");
 <div class="page-banner">
     <!-- Container -->
     <div class="container">
-        <h3><?= $categoryInfo->name ?></h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a title="<?= Lang::get("Home") ?>"
                                            href="<?= ActionUtil::getFullPathAlias("/") ?>"><?= Lang::get("Home") ?></a>
