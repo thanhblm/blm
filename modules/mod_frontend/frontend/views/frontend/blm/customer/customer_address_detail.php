@@ -15,7 +15,7 @@ $customer = RequestUtil::get('customer');
 
 ?>
 <div class="container-fluid" id="main" style="background-color: #f5f6f9;">
-    <div class="light my-account" id="account_container">
+    <div class="light my-account">
         <div>
             <div class="row">
                 <div class="col-xs-3">
@@ -24,11 +24,14 @@ $customer = RequestUtil::get('customer');
                         <li class="">
                             <a href="<?=ActionUtil::getFullPathAlias("customer/detail") ?>" aria-expanded="false"> <?= Lang::get("Account Info") ?> </a>
                         </li>
-                        <li class="">
-                            <a href="<?=ActionUtil::getFullPathAlias("home/address/list") ?>" aria-expanded="false">  <?= Lang::get("My Addresses") ?> </a>
-                        </li>
                         <li class="active">
-                            <a href="<?=ActionUtil::getFullPathAlias("customer/order/list") ?>" aria-expanded="true">  <?= Lang::get("My Orders") ?> </a>
+                            <a href="<?=ActionUtil::getFullPathAlias("home/address/list") ?>" aria-expanded="true">  <?= Lang::get("My Addresses") ?> </a>
+                        </li>
+                        <li class="">
+                            <a href="<?=ActionUtil::getFullPathAlias("customer/order/list") ?>" aria-expanded="false">  <?= Lang::get("My Orders") ?> </a>
+                        </li>
+                        <li class="">
+                            <a href="<?=ActionUtil::getFullPathAlias("customer/service/list") ?>" aria-expanded="false">  <?= Lang::get("My Services") ?> </a>
                         </li>
                         <li class="">
                             <a href="#" onclick="showLogoutDialog()">  <?= Lang::get("Logout") ?> </a>
@@ -36,14 +39,11 @@ $customer = RequestUtil::get('customer');
                     </ul>
                 </div>
                 <div class="col-xs-9">
-                    <div class="tab-pane" id="tab_orders">
-                    	<div class="tab-content" id="tab_customer_order">
-                        	<?php 
-                            	//$viewPath = ModuleConfig::getModuleConfig(RouteUtil::getRoute()->getModule())['VIEW_PATH'] . DS . "frontend" . DS;
-                            	include "customer_order_data.php";
-                            ?>
-                       	</div>
-                 	</div>
+                    <div class="tab-content" id="account_container">
+                    	<div id="div_address_list">
+							<?php include_once 'customer_address_detail_data.php'; ?>
+						</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@ $modalTemplate->render();
 	groupId = '<?=$customer->id ?>';
 	gUrlCustomerDetail = "<?=ActionUtil::getFullPathAlias("customer/account/info") ?>" + "?rtype=json";
 	gUrlEditCustomer = "<?=ActionUtil::getFullPathAlias("customer/edit") ?>" + "?rtype=json";
-	gUrlAddressList = "<?=ActionUtil::getFullPathAlias("home/address/list") ?>" + "?rtype=json";
+	gUrlAddressList = "<?=ActionUtil::getFullPathAlias("home/address/search") ?>" + "?rtype=json";
 	gUrlAddAddress = "<?=ActionUtil::getFullPathAlias("home/address/add/view") ?>" + "?rtype=json";
 	pUrlAddAddress = "<?=ActionUtil::getFullPathAlias("home/address/add") ?>" + "?rtype=json";
 	gUrlEditAddress = "<?=ActionUtil::getFullPathAlias("home/address/edit/view") ?>" + "?rtype=json";
@@ -82,7 +82,6 @@ $modalTemplate->render();
 	pUrlDelAddress = "<?=ActionUtil::getFullPathAlias("home/address/del") ?>" + "?rtype=json";
 	gUrlChangeCountry = "<?=ActionUtil::getFullPathAlias("home/address/state/list") ?>" + "?rtype=json";
 	gUrlOrderList = "<?=ActionUtil::getFullPathAlias("customer/order/list") ?>" + "?rtype=json";
-	gUrlOrderListData = "<?=ActionUtil::getFullPathAlias("customer/order/list/data") ?>" + "?rtype=json";
 	function updateSuccess(res){
 		showMessage("<?=Lang::get("Updated Successfully") ?>");
 		$("#tab_account_info").html(res.content);
@@ -134,12 +133,11 @@ $modalTemplate->render();
 	}
 
 	function addSuccessAddress(dialogId, actionBtnId, res){
-		showMessage("<?=Lang::get("Address is added successfully") ?>");
-		loadAddress();
-		$(dialogId).modal("toggle");
+		showMessage("<?=Lang::get("Add Address success") ?>","success",true);
+		location.reload();
 	}
 
-	function addActionErrorAddress(res){
+	function addActionErrorAddress(dialogId, actionBtnId, res){
 		$("#addressAddFormId").replaceWith(res.content);
 	}
 
@@ -148,15 +146,13 @@ $modalTemplate->render();
 	}
 
 	function editSuccessAddress(dialogId, actionBtnId, res){
-		showMessage("<?=Lang::get("Updated successfully!") ?>");
-		loadAddress();
-		$(dialogId).modal("toggle");
+	    showMessage("<?=Lang::get("Edit Address success") ?>","success",true);
+		location.reload();
 	}
 
 	function delSuccessAddress(dialogId, actionBtnId, res){
-		showMessage("<?=Lang::get("Deleted successfully") ?>");
-		loadAddress();
-		$(dialogId).modal("toggle");
+	    showMessage("<?=Lang::get("Delete Address success") ?>","success",true);
+		location.reload();
 	}
 
 	function editAddress(id){
@@ -193,7 +189,7 @@ $modalTemplate->render();
 			pUrlAddAddress,
 			addSuccessAddress,
 			null,
-			editActionErrorAddress
+			addActionErrorAddress
 		);
 	}
 	function changeCountrySuccess(res){
@@ -220,8 +216,8 @@ $modalTemplate->render();
 		$("#tab_customer_order").html(res.content);
 	}
 	function loadOrder(){
-		var data = $("#tab_customer_order").serialize();
-		simpleAjaxPostUpload(
+		var data = $("#formAddressList").serialize();
+		simpleAjaxPost(
 			guid(),
 			gUrlOrderList,
 			data,
@@ -229,18 +225,5 @@ $modalTemplate->render();
 		);
 	}
 
-	function loadOrderDataSuccess(res){
-		$("#tab_customer_order").html(res.content);
-	}
 	
-	function changePageOrdersCustomer(page){
-		$("#page").val(page);
-		var data = $("#tab_customer_order").serialize();
-		simpleAjaxPostUpload(
-			guid(),
-			gUrlOrderListData,
-			data,
-			loadOrderDataSuccess
-		);
-	}
 </script>
