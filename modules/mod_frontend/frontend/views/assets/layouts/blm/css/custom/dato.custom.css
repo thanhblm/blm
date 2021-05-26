@@ -1,0 +1,502 @@
+.no-padding {
+    padding: 0px;
+}
+
+.has_error input {
+    border-color: red;
+}
+
+#cat-float-basket {
+    z-index: 1031;
+    position: fixed;
+    top: 52px;
+    right: 50%;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.show-category-float #cat-float-basket {
+    opacity: 1;
+    visibility: visible;
+}
+
+.learn-more {
+    padding: 5px;
+    margin: 5px;
+    color: #404040;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.learn-more a {
+    color: #404040;
+}
+
+.product {
+    height: 475px;
+}
+
+.product .product-name {
+    height: 51px;
+    max-width: 100%;
+    max-height: 51px;
+    overflow: hidden;
+}
+
+.product img {
+    max-width: 100% !important;
+    max-height: 269px;
+    height: 269px;
+    width: auto;
+}
+
+.add-to-cart {
+    padding: 2px;
+    margin-bottom: -10px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.add-to-cart a {
+    display: inline-block;
+    width: 100%;
+    background-color: #81ad00;
+    -webkit-transition: all ease-out 0.3s;
+    -moz-transition: all ease-out 0.3s;
+    -o-transition: all ease-out 0.3s;
+    transition: all ease-out 0.3s;
+}
+
+.add-to-cart a:hover {
+    background-color: #fff;
+}
+
+.add-to-cart a:hover {
+    color: #81ad00;
+}
+
+.add-to-cart a {
+    padding: 10px;
+    margin-bottom: -10px;
+    color: #fff;
+}
+
+.carousel-inner .item {
+    height: 375px;
+}
+
+.carousel-inner .item img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.slick-slide .slick-inside.categorySlideLink img {
+    height: 150px;
+    max-height: 150px;
+    width: auto;
+}
+
+.history-entry .show-comment {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 32px;
+    line-height: 25px;
+    vertical-align: middle;
+    padding: 5px 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+#account_container .sale-reps-customer-orders ._field {
+    display: block;
+    width: auto;
+    padding: 0 20px;
+}
+
+.wholesale-contact-form select {
+    width: 100% !important;
+    border: solid 1px #D9E4E4 !important;
+    border-radius: 0px !important;
+    padding: 5px 20px !important;
+    height: 36px;
+    line-height: 36px;
+}
+
+.wholesale-contact-form .frm_select {
+    height: 36px;
+    border: none !important;
+}
+
+.shipping-method .box ul > li .price {
+    display: block;
+    float: right;
+    vertical-align: top;
+    color: #81ad00;
+    font-size: 26px;
+    font-weight: 300;
+    margin-top: -10px;
+}
+
+#account_container ._form ._field {
+    width: 100%;
+}
+
+/* 5 Columns */
+
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+    .col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.pagination > li {
+    display: inline;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0;
+}
+
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #81ad00;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #81ad00;
+    border-color: #81ad00;
+    cursor: default;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    color: #81ad00;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.dosage_bg {
+    background: #212a46; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#212a46, #222c4a); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#212a46, #222c4a); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#212a46, #222c4a); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#212a46, #222c4a);
+}
+
+.dosage_bg_yellow {
+    background: #796020; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#796020, #775A1A); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#796020, #775A1A); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#796020, #775A1A); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#796020, #775A1A);
+}
+
+.product-green-gradient {
+    background: #7A872F; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#7A872F, #637216); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#7A872F, #637216); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#7A872F, #637216); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#7A872F, #637216);
+}
+
+.gradient_20_CBD {
+    background: #C2BAA5; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#C2BAA5, #C2A897); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#C2BAA5, #C2A897); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#C2BAA5, #C2A897); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#C2BAA5, #C2A897);
+}
+
+.gradient_20_CBD_CBDa {
+    background: #6A7429; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#6A7429, #616222); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#6A7429, #616222); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#6A7429, #616222); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#6A7429, #616222);
+}
+
+.gradient_30_CBD_CBDa {
+    background: #5B1300; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#5B1300, #5D1200); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#5B1300, #5D1200); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#5B1300, #5D1200); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#5B1300, #5D1200);
+}
+
+#main > div.black-video {
+    background-color: #000;
+    padding: 0px;
+}
+
+#main > div.black-video article {
+    background-color: #000;
+    padding: 0px;
+}
+
+#main > div.FD_bg {
+    background-color: #FDFDFD;
+}
+
+.product-buy h2, .product-buy h3 {
+    color: #fff;
+}
+
+.cart-overview .title span {
+    margin-left: 15px;
+}
+
+.cart-overview .title a span {
+    margin-left: 0px;
+}
+
+.categorySlideLink .intro_category .link {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.carousel-caption .read-more, .testimonial-carousel .read-more {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+a.button, button[type=submit], div.dt-buttons button[type=button], #main form button[type=button] {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #1791ff;
+}
+
+input[type=text], input[type=email], input[type=number], input[type=password], input[type=search], select, textarea, .frm_select, .frm_file {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.top-line .slide .heading {
+    background: url('../images/text-bg.png') no-repeat -520px bottom;
+}
+
+.top-line .slide .textblock {
+    margin: 140px auto 55px auto;
+    width: 500px;
+    text-align: center;
+}
+
+.top-line .bubbles {
+
+}
+
+.top-line .slide .shop-now-button {
+    background-color: #81ad00;
+    border: 1px solid #81ad00;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    font-size: 1em;
+    padding: 5px 30px;
+}
+
+.top-line .slide .shop-now-button a {
+    color: #FFFFFF;
+}
+
+.address_selection form ._field {
+    padding-right: 0px;
+}
+
+.gray-bottom-border {
+    border-bottom: 1px solid #f2f5f7;
+}
+
+body.products div.content.product-info {
+    box-shadow: none;
+    margin-bottom: 0px;
+    padding: 35px 0 0;
+}
+
+body.products .wrap.product-inner div.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+@media (min-width: 1200px) {
+    body.products .wrap.product-inner div.container {
+        width: 96%;
+    }
+}
+
+body.products .wrap.product-inner {
+    background: #FFFFFF;
+}
+
+.tabs-container {
+    margin-top: 0px;
+}
+
+div#product-desc-content {
+    padding-top: 0px;
+}
+
+span.form-helper-text {
+    font-size: 0.8em;
+}
+
+.color {
+    color: #80ad00;
+}
+
+.front-after {
+    border-bottom: 1px solid #eaebef;
+    border-top: 1px solid #eaebef;
+    margin-bottom: -30px;
+    padding: 20px;
+}
+
+.attr-item {
+    line-height: 40px;
+}
+
+.list-attr {
+}
+
+.list-attr ul {
+    position: relative;
+}
+
+.list-attr ul li {
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+}
+
+.list-attr ul li span {
+    border: 1px solid #e9e9e9;
+    padding: 5px;
+    color: #333;
+    border-radius: 3px;
+    background-color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.list-attr ul li span:hover, .list-attr ul li.active span {
+    border: 2px solid #f90;
+    border-radius: 4px;
+    padding: 3px;
+    text-decoration: none;
+}
+
+.list-attr ul li span:hover img, .list-attr ul li.active span img {
+    width: 36px;
+}
+
+.list-attr ul li.attr-image span {
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/*
+SLIDE HOME*/
+
+
+.jumbotron {
+    position: relative;
+    overflow: hidden;
+}
+
+.jumbotron video {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*  object-fit is not supported on IE  */
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.jumbotron .container {
+    z-index: 2;
+    position: relative;
+    margin: auto;
+    color: white;
+    min-height: 400px;
+    padding: 50px;
+
+}
+
+.jumbotron h1, h2, h3, h4 {
+    text-align: center;
+    margin: 5px;
+    color: black;
+}
+.jumbotron h1 {
+    color: #1791ff;
+    font-weight: bold;
+}

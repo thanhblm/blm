@@ -186,6 +186,14 @@ $priceLevels = RequestUtil::get ( "priceLevels" );
 					$actionBtn->title = Lang::get ( "Edit Address" );
 					$actionBtn->checkActionPath = "admin/customer/address/view";
 					$actionBtn->render ();
+
+                    $actionBtn = new ButtonAction ();
+                    $actionBtn->iconClass = "fa fa-wrench";
+                    $actionBtn->color = ButtonAction::COLOR_BLUE;
+                    $actionBtn->js = "viewServiceDialog($vo->id)";
+                    $actionBtn->title = Lang::get ( "Services" );
+                    $actionBtn->checkActionPath = "admin/customer/service/view";
+                    $actionBtn->render ();
 					
 					$actionBtn = new ButtonAction ();
 					$actionBtn->iconClass = "fa fa-copy";

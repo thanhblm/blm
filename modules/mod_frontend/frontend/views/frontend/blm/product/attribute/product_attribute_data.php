@@ -1,5 +1,6 @@
 <?php
 
+use common\helper\DatoImageHelper;
 use core\Lang;
 use core\utils\ActionUtil;
 use core\utils\RequestUtil;
@@ -10,33 +11,68 @@ if (is_null($productId)) {
 	$productId = RequestUtil::get("product")->id;
 }
 ?>
-<?php
-if (count($attrExtGroupVos) > 0) {
-	foreach ($attrExtGroupVos as $key => $attrGroup) {
-		if (isset($attrGroup->listAttr) && count($attrGroup->listAttr->getArray()) > 0) {
-			?>
-			<div class="margin_bottom_30">
-				<select class="menu-font">
-					<option class="uppercase"><?= Lang::getWithFormat("Please select a {0}", $attrGroup->name) ?></option>
-					<?php
-					foreach ($attrGroup->listAttr->getArray() as $object) {
-						?>
-						<option class="capital" value="<?= $object->id ?>"><?= $object->name ?></option>
-						<?php
-					}
-					?>
-				</select>
-			</div>
-			<?php
+<div id="product_attr">
+	<?php
+	if (count($attrExtGroupVos) > 0) {
+		foreach ($attrExtGroupVos as $key => $attrGroup) {
+			if (isset($attrGroup->listAttr) && count($attrGroup->listAttr->getArray()) > 0) {
+				?>
+				<div class="attr-item">
+					<div class=" col-md-3"><?= Lang::get($attrGroup->name . ":") ?>
+						<input type="hidden" name="attrGroupListId[]" value="<?= $attrGroup->id ?>"/>
+					</div>
+					<div class="list-attr col-md-9">
+						<ul style="padding: 0;">
+							<?php
+							foreach ($attrGroup->listAttr->getArray() as $object) {
+								if ($object->type === "image") {
+									$imageMo = DatoImageHelper::getImageInfoById($object->image);
+									?>
+									<li class="attr-image" onclick="javascript:selectAttr($(this))">
+                                    <span>
+                                        <input type='checkbox' style="display: none;" name="attributeSelect[]" value='<?= $object->id ?>' id="<?= $object->id ?>"/>
+                                        <img alt="image" title="<?= $object->description ?>" for="thing"
+                                             src="<?= DatoImageHelper::getSmallImageUrl($imageMo) ?>"
+                                             width="40px">
+                                    </span>
+									</li>
+									<?php
+								} elseif ($object->type === "code") {
+									?>
+									<li onclick="javascript:selectAttr($(this))">
+									<span title="<?= $object->name ?>" style="background-color: <?= $object->description?>">
+										<input style="display: none;" type='checkbox' name="attributeSelect[]" value='<?= $object->id ?>' id="<?= $object->id ?>"/>
+										&nbsp;&nbsp;&nbsp;&nbsp;
+									</span>
+									</li>
+									<?php
+								} else {
+									?>
+									<li onclick="javascript:selectAttr($(this))">
+									<span title="<?= $object->description ?>">
+										<input style="display: none;" type='checkbox' name="attributeSelect[]" value='<?= $object->id ?>' id="<?= $object->id ?>"/>
+										<?php echo $object->name ?>
+									</span>
+									</li>
+									<?php
+								}
+							}
+							?>
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<?php
+			}
 		}
 	}
-}
-?>
-<input type="hidden" name="productAttribute[productId]" value="<?= $productId ?>"/>
-<div id="div_footer_form_update_price">
-	<?php
-	include "product_attribute_update_data.php";
 	?>
+	<input type="hidden" name="productAttribute[productId]" value="<?= $productId ?>"/>
+	<div id="div_footer_form_update_price">
+		<?php
+		include "product_attribute_update_data.php";
+		?>
+	</div>
 </div>
 <script type="text/javascript">
     function selectAttr(element) {

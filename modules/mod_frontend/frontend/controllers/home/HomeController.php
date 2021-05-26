@@ -65,6 +65,7 @@ class HomeController extends FrontendController
         $this->loadImages();
         $this->loadBlogFutured();
         $this->getBlog();
+
         return "success";
     }
 

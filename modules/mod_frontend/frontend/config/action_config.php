@@ -20,7 +20,7 @@ return array(
 		'results' => array(
 			'success' => array(
 				'type' => 'include',
-				'path' => 'blm/index.php'
+				'path' => 'blm/home/index.php'
 			)
 		)
 	),
@@ -333,10 +333,6 @@ return array(
 			'success' => array(
 				'type' => 'include',
 				'path' => 'blm/customer/customer_detail_data.php'
-			),
-			'login' => array(
-				'type' => 'redirect',
-				'path' => ''
 			),
 			'login' => array(
 				'type' => 'redirect',

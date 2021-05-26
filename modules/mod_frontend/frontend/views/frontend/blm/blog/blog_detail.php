@@ -1,117 +1,82 @@
 <?php
-
-use common\helper\DatoImageHelper;
-use common\helper\SettingHelper;
-use common\rule\url\friendly\AliasUrlFriendly;
-use common\rule\url\friendly\BlogUrlFriendly;
-use common\rule\url\friendly\CategoryBlogUrlFriendly;
-use core\Lang;
 use core\utils\ActionUtil;
 use core\utils\RequestUtil;
-
-$categoryParent = RequestUtil::get("categoryParent");
-$categoryUrl = ActionUtil::getFullPathAlias("category/blog/detail?categoryId=" . $categoryParent->id, new CategoryBlogUrlFriendly($categoryParent->languageCode, $categoryParent->id, $categoryParent->seoUrl, $categoryParent->name));
-$titlePage = SettingHelper::getSettingValue("Name");
-$blog = RequestUtil::get("blog");
-$imageMo = DatoImageHelper::getImageInfoById(json_decode($blog->images)[0]);
-$url = ActionUtil::getFullPathAlias("home/blog/detail?id=$blog->id", new BlogUrlFriendly($blog->languageCode, $blog->id, $blog->url, $blog->name));
+$blog = RequestUtil::get ( 'blog' );
+$lstBlogFearured = RequestUtil::get ( "blogFearured" );
+$blogFearured = $lstBlogFearured->records;
+$blogRelated = RequestUtil::get ( 'blogRelated' );
+$categoryParent = RequestUtil::get ( 'categoryParent' );
 ?>
 
+<div class="col-md-12" style="padding: 0;">
+	<div class="parent-main-left">	
+		<?php include "blog_detail_data.php" ?>		
+		<!-- main-inner-wrap -->
+	</div>
+	<!-- /main-wrapper -->
 
-<div class="main-container">
-    <!-- Page Banner -->
-    <div class="page-banner">
-        <!-- Container -->
-        <div class="container">
-            <h3><?= $blog->name ?></h3>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a title="<?= Lang::get("Home") ?>"
-                                               href="<?= ActionUtil::getFullPathAlias("/") ?>"><?= Lang::get("Home") ?></a>
-                </li>
-                <li class="breadcrumb-item"><a
-                            href="<?= ActionUtil::getFullPathAlias("home/blog/list", new AliasUrlFriendly("tin-tuc")) ?>"
-                            title="<?= Lang::get("Tin tức") ?>"><?= Lang::get("Tin tức") ?></a></li>
-                <li class="breadcrumb-item"><a
-                            href="<?= $categoryUrl ?>"
-                            title="<?= $categoryParent->name ?>"><?= $categoryParent->name ?></a></li>
-                <li class="breadcrumb-item active"><?= $blog->name ?></li>
 
-            </ol>
-        </div><!-- Container /- -->
-    </div><!-- Page Banner /- -->
-
-    <main class="site-main">
-
-        <!-- Page Content -->
-        <div class="page-content">
-
-            <!-- Single Post -->
-            <div class="single-post">
-                <!-- Container -->
-                <div class="container">
-                    <!-- Row -->
-                    <div class="row">
-                        <!-- Content Area -->
-                        <div class="col-lg-9 col-md-7 content-area">
-                            <!-- Blog Box -->
-                            <div class="blog-box">
-                                <div class="entry-cover">
-                                    <img src="<?= DatoImageHelper::getUrl($imageMo) ?>" alt="<?= $blog->name ?>"/>
-                                    <div class="entry-meta">
-                                        <span class="posted-on"><a href="<?=$url?>"><?= $blog->crDate ?></a></span>
-                                        <div class="author">
-                                            <span class="cat-links"><?= $categoryParent->name ?> : <a
-                                                        href="<?= $categoryUrl ?>"><?= $categoryParent->name ?></a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="entry-content">
-                                    <h3 class="entry-title"><?= $blog->name ?></h3>
-                                    <h4 class="entry-title"><?= $blog->description ?></h4>
-                                    <?= $blog->composition ?>
-                                </div>
-                                <!--<div class="entry-footer">
-                                    <div class="social-share">
-                                        <h4>Share This Post</h4>
-                                        <ul>
-                                            <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" title="Google+"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>-->
-                            </div><!-- Blog Box -->
-                            <!-- About Author -->
-                            <!--<div class="post-author">
-                                <div class="author-detail">
-                                    <img src="assets/images/post-author.jpg" alt="Author" />
-                                    <h3>john davis</h3>
-                                    <p>These men promptly escaped from a maximum security stockade to the Los Angeles underground? Believe it or not I'm walking on air. I never thought I could feel so free. Flying away on a wing and a prayer could it beme.</p>
-                                    <ul>
-                                        <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" title="Google+"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>-->
-                            <!-- About Author /- -->
-                            <!-- Comment Area -->
-                        </div><!-- Content Area -->
-                        <!-- Widget Area -->
-                        <div class="col-lg-3 col-md-5 widget-area">
-                            <?php
-                            include "side_bar_blog_right.php";
-                            ?>
-                        </div><!-- Widget Area /- -->
-                    </div><!-- Row /- -->
-                </div><!-- Container /- -->
-            </div><!-- Single Post /- -->
-
-        </div><!-- Page Content /- -->
-
-    </main>
+	<div id="RightMainContent" class="col_right parent-main-right">
+		<div style="clear: both;"></div>
+		<div class="adPosition" positioncode="BANNER_POSITION_RIGHT_MAIN_CONTENT" style="margin-bottom: 10px;">
+			<div class="adshared">
+				<div class="aditem" time="15" style="display: block;" src="https://file4.batdongsan.com.vn/2016/06/13/V5fQl2m0/20160613154250-76ef.jpg" altsrc="https://file4.batdongsan.com.vn/2016/06/13/V5fQl2m0/20160613154250-76ef.jpg" link="https://alokiddy.com.vn/" bid="3850" tip="" tp="7" w="240" h="150"
+					k="">
+					<a href="/click.aspx?bannerid=3850" target="_blank" title="" rel="nofollow"><img src="https://file4.batdongsan.com.vn/2016/06/13/V5fQl2m0/20160613154250-76ef.jpg" style="max-width: 100%; height: 150px;"></a>
+				</div>
+			</div>
+			<div class="adshared">
+				<div class="aditem" time="6" style="display: block;" src="https://file4.batdongsan.com.vn/2017/11/30/RUFz0fap/20171130091123-635e.jpg" altsrc="https://file4.batdongsan.com.vn/2017/11/30/RUFz0fap/20171130091123-635e.jpg" link="https://batdongsan.com.vn/phong-thuy" bid="664"
+					tip="http://batdongsan.com.vn/ban-can-ho-chung-cu-tp-hcm" tp="7" w="240" h="150" k="">
+					<a href="/click.aspx?bannerid=664" target="_blank" title="http://batdongsan.com.vn/ban-can-ho-chung-cu-tp-hcm" rel="nofollow"><img src="https://file4.batdongsan.com.vn/2017/11/30/RUFz0fap/20171130091123-635e.jpg" style="max-width: 100%; height: 150px;"></a>
+				</div>
+			</div>
+			<div class="adshared">
+				<div class="aditem" time="10" style="display: block;" src="https://file4.batdongsan.com.vn/2017/11/01/RUFz0fap/20171101081951-d5f8.jpg" altsrc="https://file4.batdongsan.com.vn/2017/11/01/RUFz0fap/20171101081951-d5f8.jpg" link="https://batdongsan.com.vn/nha-dep" bid="1788" tip="" tp="7" w="240"
+					h="150" k="">
+					<a href="/click.aspx?bannerid=1788" target="_blank" title="" rel="nofollow"><img src="https://file4.batdongsan.com.vn/2017/11/01/RUFz0fap/20171101081951-d5f8.jpg" style="max-width: 100%; height: 150px;"></a>
+				</div>
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div class="fb-fanpage">
+			<div id="fb-root" class=" fb_reset">
+				<div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+					<div></div>
+				</div>
+				<div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+					<div>
+						<iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1"
+							src="https://staticxx.facebook.com/connect/xd_arbiter/r/RQ7NiRXMcYA.js?version=42#channel=f31869cc1917194&amp;origin=https%3A%2F%2Fbatdongsan.com.vn" style="border: none;"></iframe>
+					</div>
+				</div>
+			</div>
+			<div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/Batdongsandv/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" fb-xfbml-state="rendered"
+				fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=302507473246792&amp;container_width=240&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FBatdongsandv%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false">
+				<span style="vertical-align: bottom; width: 240px; height: 214px;"><iframe name="f962ff915494c" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:page Facebook Social Plugin"
+						src="https://www.facebook.com/v2.10/plugins/page.php?adapt_container_width=true&amp;app_id=302507473246792&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FRQ7NiRXMcYA.js%3Fversion%3D42%23cb%3Df1c8fd53ba17738%26domain%3Dbatdongsan.com.vn%26origin%3Dhttps%253A%252F%252Fbatdongsan.com.vn%252Ff31869cc1917194%26relation%3Dparent.parent&amp;container_width=240&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FBatdongsandv%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false"
+						style="border: none; visibility: visible; width: 240px; height: 214px;" class=""></iframe></span>
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<!-- sidebar-wrapper -->
+	<div class="clear"></div>
 </div>
+
+<script type="text/javascript">
+    var gUrlBlogList = "<?=ActionUtil::getFullPathAlias("home/blog/list/search") ?>" + "?rtype=json";
+
+    function changePageBlogs(page) {
+        simpleAjaxPost(
+            guid(),
+            gUrlBlogList + "&page="+page,
+            "",
+            loadBlogSuccess
+        );
+    }
+
+    function loadBlogSuccess(res) {
+		$("#Blog1").html(res.content);
+    }
+</script>
